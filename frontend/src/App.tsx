@@ -1,27 +1,10 @@
-import "./App.css";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { HomePage } from "./pages/Home";
-import { PageLayout } from "./components/Layout";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-
-const client = new ApolloClient({
-  uri: "/api",
-  cache: new InMemoryCache(),
-  credentials: "same-origin",
-});
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <BrowserRouter>
-        <Routes>
-          <Route Component={PageLayout}>
-            <Route path="/" Component={HomePage} />
-            <Route path="*" Component={() => <Navigate to="/" />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </ApolloProvider>
+    <main className="relative mx-auto h-[calc(100vh-var(--spacing-navbar))] overflow-y-auto">
+      <Outlet />
+    </main>
   );
 }
 

@@ -9,8 +9,10 @@ RUN npm install
 
 # do not use this because it copies node_modules and may cause some incohrence between operating systems
 # COPY . .
-
+COPY codegen.ts codegen.ts
+COPY vite.config.ts vite.config.ts
 COPY tsconfig.json tsconfig.json
+COPY components.json components.json
 COPY tsconfig.app.json tsconfig.app.json
 COPY tsconfig.node.json tsconfig.node.json
 COPY vite.config.ts vite.config.ts
